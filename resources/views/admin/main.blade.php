@@ -57,6 +57,9 @@
 	                            <th> T Shirt Size</th>
 	                            <th> Details</th>
 	                            <th> Collect</th>
+	                            <th> Collector Name</th>
+	                            <th> Collector IC</th>
+	                            <th> Collector No.</th>
 	                        </tr>
 	                    </thead>
 	                    <tbody id="tbody">
@@ -72,7 +75,10 @@
 	                            <td> 24KM</td>
 	                            <td style="padding-left: 45px"> S</td>
 	                            <td> <a href="" class="btn btn-success btn-sm ">View</a></td>
-	                            <td  style="padding-left: 25px"> <input type="checkbox" value="1" name="test"></td>
+	                            <td  style="padding-left: 25px"> <input type="checkbox" value="1" name="checkbox[<?php echo $participant->id; ?>]"></td>
+	                            <td> <input type="text" name="c_name[<?php echo $participant->id; ?>]" class="form-control"> </td>
+	                            <td> <input type="text" name="c_ic[<?php echo $participant->id; ?>]" class="form-control"> </td>
+	                            <td> <input type="text" name="c_no[<?php echo $participant->id; ?>]" class="form-control"> </td>
 	                        </tr>
 	                        <?php $count++ ?>
 	                        @endforeach
