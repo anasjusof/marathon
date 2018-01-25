@@ -117,4 +117,28 @@ class AdminController extends Controller
     		return redirect()->back()->with('error_message', 'No file chosen, please upload file!');
     	}
     }
+
+    public function updateCollection(Request $request){
+    	foreach($request->p_id as $p_id){
+    		$participant = Participant::where('id', $p_id)->first();
+
+    		$participant->collection_status = 1;
+    		$participant->collection_name = $request->c_name[$p_id];
+    		$participant->collection_ic = $request->c_ic[$p_id];
+    		$participant->collection_no = $request->c_no[$p_id];
+
+    		$participant->save();
+
+    		// $updateCollection = array(
+	     //        'collection_status' => 1,
+	     //        'collection_name' => $request->c_name[$p_id],
+	     //        'collection_ic' => $request->c_ic[$p_id],
+	     //        'collection_no' => $request->c_no[$p_id]
+	     //    );
+
+	     //    $participant = Participant::update($updateCollection, $p_id);
+    	}
+
+    	return redirect()->back()->with('create_message', 'Collection updated!');
+    }
 }

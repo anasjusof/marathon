@@ -30,6 +30,8 @@ Route::group(['middleware'=>['auth']], function(){
 
 	Route::get('/uploadexcel', 'AdminController@uploadExcel')->name('uploadexcel');
 
+	Route::patch('/updateCollection', 'AdminController@updateCollection')->name('updateCollection');
+
 	Route::post('/uploadexcelparticipant', ['uses'=>'AdminController@uploadExcelParticipant'])->name('uploadexcelparticipant');
 
 });

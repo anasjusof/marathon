@@ -75,10 +75,18 @@
 	                            <td> 24KM</td>
 	                            <td style="padding-left: 45px"> S</td>
 	                            <td> <a href="" class="btn btn-success btn-sm ">View</a></td>
-	                            <td  style="padding-left: 25px"> <input type="checkbox" value="1" name="checkbox[<?php echo $participant->id; ?>]"></td>
-	                            <td> <input type="text" name="c_name[<?php echo $participant->id; ?>]" class="form-control"> </td>
-	                            <td> <input type="text" name="c_ic[<?php echo $participant->id; ?>]" class="form-control"> </td>
-	                            <td> <input type="text" name="c_no[<?php echo $participant->id; ?>]" class="form-control"> </td>
+	                            <td  style="padding-left: 25px"> 
+	                            	<input type="checkbox" value="<?php echo $participant->id; ?>" name="p_id[<?php echo $participant->id; ?>]" form="form_update_status" <?php if($participant->collection_status == 1){ echo 'checked';} ?>>
+	                            </td>
+	                            <td> 
+	                            	<input type="text" name="c_name[<?php echo $participant->id; ?>]" class="form-control" form="form_update_status" value="{{ $participant->collection_name }}">
+	                            </td>
+	                            <td>
+	                            	<input type="text" name="c_ic[<?php echo $participant->id; ?>]" class="form-control" form="form_update_status" value="{{ $participant->collection_ic }}">
+	                            </td>
+	                            <td>
+	                            	<input type="text" name="c_no[<?php echo $participant->id; ?>]" class="form-control" form="form_update_status" value="{{ $participant->collection_no }}">
+	                            </td>
 	                        </tr>
 	                        <?php $count++ ?>
 	                        @endforeach
@@ -107,8 +115,8 @@
 		        	</div>
 		        	<div class="col-md-6">
 		        		<div class="pull-right"  style="padding-right: 25px; padding-top: 15px;">
-		        			{!! Form::open(['method'=>'DELETE', 'id'=>'form_update_status']) !!}
-		        			<button class="btn btn-sm btn-primary deleteBtn">Collect & Update</button>
+		        			{!! Form::open(['method'=>'PATCH', 'action'=>['AdminController@updateCollection'], 'id'=>'form_update_status']) !!}
+		        			<button class="btn btn-sm btn-primary">Collect & Update</button>
 		        			{!! Form::close() !!}
 		        		</div>
 		        	</div>

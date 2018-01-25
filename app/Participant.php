@@ -30,6 +30,10 @@ class Participant extends Model
         'emergency_contact',
         'emergency_relation',
         'blood_type',
-        'gender'
+        'gender',
+        'collection_status',
+        'collection_name',
+        'collection_ic',
+        'collection_no'
     ];
 }
