@@ -74,7 +74,39 @@
 	                            <td> {{ $participant->mobile_no }} </td>
 	                            <td> 24KM</td>
 	                            <td style="padding-left: 45px"> S</td>
-	                            <td> <a href="" class="btn btn-success btn-sm ">View</a></td>
+	                            <td>
+	                            	<a href="" class="btn btn-success btn-sm editBtn"
+	                            	 data-toggle="modal" data-target="#editModal" 
+	                            	 data-reg_code="{{ $participant->reg_code }}" 
+	                            	 data-main_category="{{ $participant->main_category }}" 
+	                            	 data-competition_name="{{ $participant->competition_name }}" 
+	                            	 data-first_name="{{ $participant->first_name }}" 
+	                            	 data-name_on_bib="{{ $participant->name_on_bib }}" 
+	                            	 data-address1="{{ $participant->address1 }}" 
+	                            	 data-address2="{{ $participant->address2 }}" 
+	                            	 data-postcode="{{ $participant->postcode }}" 
+	                            	 data-city="{{ $participant->city }}" 
+	                            	 data-state="{{ $participant->state }}" 
+	                            	 data-country_name="{{ $participant->country_name }}" 
+	                            	 data-nationality_name="{{ $participant->nationality_name }}" 
+	                            	 data-email="{{ $participant->email }}" 
+	                            	 data-mobile_no="{{ $participant->mobile_no }}" 
+	                            	 data-nric_passport="{{ $participant->nric_passport }}" 
+	                            	 data-date_of_birth="{{ $participant->date_of_birth }}" 
+	                            	 data-age_as_event_year="{{ $participant->age_as_event_year }}" 
+	                            	 data-apparel_size="{{ $participant->apparel_size }}" 
+	                            	 data-shirt_color="{{ $participant->shirt_color }}" 
+	                            	 data-emergency_name="{{ $participant->emergency_name }}" 
+	                            	 data-emergency_contact="{{ $participant->emergency_contact }}" 
+	                            	 data-emergency_relation="{{ $participant->emergency_relation }}" 
+	                            	 data-blood_type="{{ $participant->blood_type }}" 
+	                            	 data-gender="{{ $participant->gender }}" 
+	                            	 data-collection_status="{{ $participant->collection_status }}" 
+	                            	 data-collection_name="{{ $participant->collection_name }}" 
+	                            	 data-collection_ic="{{ $participant->collection_ic }}" 
+	                            	 data-collection_no="{{ $participant->collection_no }}" 
+	                            	>View</a>
+	                            </td>
 	                            <td  style="padding-left: 25px"> 
 	                            	<input type="checkbox" value="<?php echo $participant->id; ?>" name="p_id[<?php echo $participant->id; ?>]" form="form_update_status" <?php if($participant->collection_status == 1){ echo 'checked';} ?>>
 	                            </td>
@@ -136,88 +168,164 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Edit Info</h4>
+        <h4 class="modal-title">Participant Info</h4>
       </div>
       <div class="modal-body">
       	<div class="row">
-      	{!! Form::open(['method'=>'PATCH']) !!}
       		<div class="form-group col-md-12">
-	            <label for="inputPassword1" class="col-md-4 control-label">Model</label>
+	            <label for="inputPassword1" class="col-md-4 control-label">Registration Code</label>
 	            <div class="col-md-8">
-	                    <input type="text" name="model" class="form-control input-line" id="m_vehicle_model">
+	                    <input type="text" name="model" class="form-control input-line" id="m_reg_code" readonly>
 	            </div>
 	        </div>
 	        <div class="form-group col-md-12">
-	            <label for="inputPassword1" class="col-md-4 control-label">Plate</label>
+	            <label for="inputPassword1" class="col-md-4 control-label">Main Category</label>
 	            <div class="col-md-8">
-	                    <input type="text" name="plate" class="form-control input-line" id="m_vehicle_plate">
+	                    <input type="text" name="plate" class="form-control input-line" id="m_main_category" readonly>
 	            </div>
 	        </div>
 	        <div class="form-group col-md-12">
-	            <label for="inputPassword1" class="col-md-4 control-label">Type</label>
+	            <label for="inputPassword1" class="col-md-4 control-label">Competition Name</label>
 	            <div class="col-md-8">
-	                    <input type="text" name="type" class="form-control input-line" id="m_vehicle_type">
+	                    <input type="text" name="type" class="form-control input-line" id="m_competition_name" readonly>
 	            </div>
 	        </div>
-	        
-	        <input type="hidden" name="id" id="m_vehicle_id">
-	    
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">First Name</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="model" class="form-control input-line" id="m_first_name" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">Name on BIB</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="plate" class="form-control input-line" id="m_name_on_bib" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">Address 1</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="type" class="form-control input-line" id="m_address1" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">Address 2</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="model" class="form-control input-line" id="m_address2" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">Postcode</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="plate" class="form-control input-line" id="m_postcode" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">City</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="type" class="form-control input-line" id="m_city" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">State</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="model" class="form-control input-line" id="m_state" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">Country</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="plate" class="form-control input-line" id="m_country_name" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">Nationality</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="type" class="form-control input-line" id="m_nationality_name" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">Email</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="model" class="form-control input-line" id="m_email" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">Mobile No.</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="plate" class="form-control input-line" id="m_mobile_no" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">NRIC / Passport</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="type" class="form-control input-line" id="m_nric_passport" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">Date of Birth</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="model" class="form-control input-line" id="m_date_of_birth" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">Age as Event Year</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="plate" class="form-control input-line" id="m_age_as_event_year" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">Apparel Size</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="type" class="form-control input-line" id="m_apparel_size" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">Shirt Color</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="model" class="form-control input-line" id="m_shirt_color" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">Emergency Name</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="plate" class="form-control input-line" id="m_emergency_name" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">Emergency Contact</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="type" class="form-control input-line" id="m_emergency_contact" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">Emergency Relation</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="model" class="form-control input-line" id="m_emergency_relation" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">Blood Type</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="plate" class="form-control input-line" id="m_blood_type" readonly>
+	            </div>
+	        </div>
+	        <div class="form-group col-md-12">
+	            <label for="inputPassword1" class="col-md-4 control-label">Gender</label>
+	            <div class="col-md-8">
+	                    <input type="text" name="type" class="form-control input-line" id="m_gender" readonly>
+	            </div>
+	        </div>
 	  	</div>
       </div>
       <div class="modal-footer">
-      	<button type="submit" class="btn btn-primary">Update</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-       {!! Form::close() !!}
       </div>
     </div>
 
   </div>
 </div>
 <!-- End Modal -->
-
-<!-- Modal -->
-<div id="createModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Create New Vehicle</h4>
-      </div>
-      <div class="modal-body">
-      	<div class="table-scrollable table-scrollable-borderless">
-            {!! Form::open(['method'=>'POST']) !!}
-            	<div class="form-group col-md-12">
-		            <label for="inputPassword1" class="col-md-4 control-label">Model</label>
-		            <div class="col-md-8">
-		                    <input type="text" name="model" class="form-control input-line" id="vmodel" value="{{ old('model') }}">
-		            </div>
-		        </div>
-		        <div class="form-group col-md-12">
-		            <label for="inputPassword1" class="col-md-4 control-label">Plate</label>
-		            <div class="col-md-8">
-		                    <input type="text" name="plate" class="form-control input-line" id="vplate" value="{{ old('plate') }}">
-		            </div>
-		        </div>
-		        <div class="form-group col-md-12">
-		            <label for="inputPassword1" class="col-md-4 control-label">Type</label>
-		            <div class="col-md-8">
-		                    <input type="text" name="type" class="form-control input-line" id="vplate" value="{{ old('type') }}">
-		            </div>
-		        </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-      	<button class="btn btn-transparent blue btn-sm active submitVehicleBtn"> Submit </button>
-        <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">Close</button>
-       {!! Form::close() !!}
-      </div>
-    </div>
-
-  </div>
-</div>
-<!-- End modal -->
 
 @stop
 
@@ -238,13 +346,31 @@
 
        $('.editBtn').click(function(){
 
-       		var roles_id = $(this).data('roles_id');
-       		var faculties_id = $(this).data('faculties_id');
+       		$("#m_reg_code").val($(this).data('reg_code'));
+		 	$("#m_main_category").val($(this).data('main_category'));
+		 	$("#m_competition_name").val($(this).data('competition_name'));
+		 	$("#m_first_name").val($(this).data('first_name'));
+		 	$("#m_name_on_bib").val($(this).data('name_on_bib'));
+		 	$("#m_address1").val($(this).data('address1'));
+		 	$("#m_address2").val($(this).data('address2'));
+		 	$("#m_postcode").val($(this).data('postcode'));
+		 	$("#m_city").val($(this).data('city'));
+		 	$("#m_state").val($(this).data('state'));
+		 	$("#m_country_name").val($(this).data('country_name'));
+		 	$("#m_nationality_name").val($(this).data('nationality_name'));
+		 	$("#m_email").val($(this).data('email'));
+		 	$("#m_mobile_no").val($(this).data('mobile_no'));
+		 	$("#m_nric_passport").val($(this).data('nric_passport'));
+		 	$("#m_date_of_birth").val($(this).data('date_of_birth'));
+		 	$("#m_age_as_event_year").val($(this).data('age_as_event_year'));
+		 	$("#m_apparel_size").val($(this).data('apparel_size'));
+		 	$("#m_shirt_color").val($(this).data('shirt_color'));
+		 	$("#m_emergency_name").val($(this).data('emergency_name'));
+		 	$("#m_emergency_contact").val($(this).data('emergency_contact'));
+		 	$("#m_emergency_relation").val($(this).data('emergency_relation'));
+		 	$("#m_blood_type").val($(this).data('blood_type'));
+		 	$("#m_gender").val($(this).data('gender'));
 
-       		$("#m_vehicle_id").val($(this).data('vehicle_id'));
-		 	$("#m_vehicle_model").val($(this).data('vehicle_model'));
-		 	$("#m_vehicle_plate").val($(this).data('vehicle_plate'));
-		 	$("#m_vehicle_type").val($(this).data('vehicle_type'));
        });
 
        $('#search_btn').click(function(){
